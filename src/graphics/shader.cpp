@@ -95,10 +95,11 @@ namespace kengine{ namespace graphics{
             return 0;
         }
 
-        glValidateProgram(program);
+        //glValidateProgram(program);
 
         glDetachShader(program, vertex);
         glDetachShader(program, fragment);
+
 
         return program;
     }

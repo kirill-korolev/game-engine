@@ -6,7 +6,7 @@
 
 namespace kengine{ namespace math{
 
-    Vec4::Vec4(T x, T y, T z, T w): Vec({x, y, z, w}) {
+    Vec4::Vec4(GLfloat x, GLfloat y, GLfloat z, GLfloat w): Vec({x, y, z, w}) {
 
     }
 
@@ -14,19 +14,19 @@ namespace kengine{ namespace math{
 
     }
 
-    T Vec4::x() const{
+    GLfloat Vec4::x() const{
         return data_[0];
     }
 
-    T Vec4::y() const{
+    GLfloat Vec4::y() const{
         return data_[1];
     }
 
-    T Vec4::z() const{
+    GLfloat Vec4::z() const{
         return data_[2];
     }
 
-    T Vec4::w() const{
+    GLfloat Vec4::w() const{
         return data_[3];
     }
 

@@ -26,6 +26,12 @@ namespace kengine{ namespace graphics {
         GLFWwindow* window_;
         Input input_;
     private:
+        GLfloat g_vertex_buffer_data[9] = {
+                -1.0f, -1.0f, 0.0f,
+                1.0f, -1.0f, 0.0f,
+                0.0f,  1.0f, 0.0f,
+        };
+        GLuint vertexbuffer;
         bool init();
         void update();
         void clear();

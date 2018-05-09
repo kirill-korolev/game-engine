@@ -6,7 +6,7 @@
 
 namespace kengine{ namespace math{
 
-    Vec3::Vec3(T x, T y, T z): Vec({x, y, z}) {
+    Vec3::Vec3(GLfloat x, GLfloat y, GLfloat z): Vec({x, y, z}) {
 
     }
 
@@ -14,15 +14,15 @@ namespace kengine{ namespace math{
 
     }
 
-    T Vec3::x() const{
+    GLfloat Vec3::x() const{
         return data_[0];
     }
 
-    T Vec3::y() const{
+    GLfloat Vec3::y() const{
         return data_[1];
     }
 
-    T Vec3::z() const{
+    GLfloat Vec3::z() const{
         return data_[2];
     }
 

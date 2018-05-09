@@ -5,8 +5,7 @@
 #ifndef GLFW_APP_MATRIX_H
 #define GLFW_APP_MATRIX_H
 
-#include "defines.h"
-#include "vec3.h"
+#include <GL/glew.h>
 
 namespace kengine{ namespace math{
 
@@ -19,11 +18,9 @@ namespace kengine{ namespace math{
         Mat4& operator*=(const Mat4& other);
         friend Mat4 operator*(Mat4& left, const Mat4& right);
     public:
-        T items[SIZE];
+        GLfloat items[SIZE];
     public:
         static Mat4 id();
-        static Mat4 ortho(T left, T top, T right, T bottom, T near, T far);
-        static Mat4 translation(const Vec3& vector);
     };
 }}
 

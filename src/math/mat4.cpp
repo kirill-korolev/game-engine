@@ -11,7 +11,7 @@ namespace kengine{ namespace math{
     }
 
     Mat4& Mat4::operator*=(const Mat4& other){
-        T tmp = 0.0;
+        GLfloat tmp = 0.0;
 
         for(int i = 0; i < 4; ++i){
             for(int j = 0; j < 4; ++j){
@@ -31,27 +31,6 @@ namespace kengine{ namespace math{
         mat.items[5] = 1.0;
         mat.items[10] = 1.0;
         mat.items[15] = 1.0;
-        return mat;
-    }
-
-
-    Mat4 Mat4::ortho(T left, T top, T right, T bottom, T near, T far){
-        Mat4 mat;
-        mat.items[0] = 2.0 / (right - left);
-        mat.items[3] = -(right + left) / (right - left);
-        mat.items[5] = 2.0 / (top - bottom);
-        mat.items[7] = -(top + bottom) / (top - bottom);
-        mat.items[10] = -2.0 / (far - near);
-        mat.items[11] = -(far + near) / (far - near);
-        mat.items[15] = 1.0;
-        return mat;
-    }
-
-    Mat4 Mat4::translation(const Vec3& vector){
-        Mat4 mat = Mat4::id();
-        mat.items[3] = vector.x();
-        mat.items[7] = vector.y();
-        mat.items[11] = vector.z();
         return mat;
     }
 

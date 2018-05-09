@@ -36,20 +36,17 @@ namespace kengine{ namespace input{
     inline void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods){
         auto* input = (Input*)glfwGetWindowUserPointer(window);
         input->keys_[key] = action != GLFW_RELEASE;
-        std::cout << (GLchar)key << std::endl;
     }
 
     inline void buttonCallback(GLFWwindow* window, int button, int action, int mods){
         auto* input = (Input*)glfwGetWindowUserPointer(window);
         input->buttons_[button] = action != GLFW_RELEASE;
-        std::cout << (GLchar)button << std::endl;
     }
 
     inline void mousePositionCallback(GLFWwindow* window, double x, double y){
         auto* input = (Input*)glfwGetWindowUserPointer(window);
         input->x_ = x;
         input->y_ = y;
-        std::cout << x << " " << y << std::endl;
     }
 }}
 

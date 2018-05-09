@@ -12,12 +12,12 @@ namespace kengine{ namespace math{
     class Vec2: public Vec<2>{
     public:
         using Vec::Vec;
-        Vec2(T x, T y);
+        Vec2(GLfloat x, GLfloat y);
         Vec2(Vec<2>&& other);
         ~Vec2()=default;
 
-        T x() const;
-        T y() const;
+        GLfloat x() const;
+        GLfloat y() const;
     };
 
 }}

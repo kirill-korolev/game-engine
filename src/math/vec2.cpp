@@ -6,7 +6,7 @@
 
 namespace kengine{ namespace math{
 
-    Vec2::Vec2(T x, T y): Vec({x, y}) {
+    Vec2::Vec2(GLfloat x, GLfloat y): Vec({x, y}) {
 
     }
 
@@ -14,11 +14,11 @@ namespace kengine{ namespace math{
 
     }
 
-    T Vec2::x() const{
+    GLfloat Vec2::x() const{
         return data_[0];
     }
 
-    T Vec2::y() const{
+    GLfloat Vec2::y() const{
         return data_[1];
     }
 

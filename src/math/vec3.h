@@ -13,13 +13,13 @@ namespace kengine{ namespace math{
     class Vec3: public Vec<3>{
     public:
         using Vec::Vec;
-        Vec3(T x, T y, T z);
+        Vec3(GLfloat x, GLfloat y, GLfloat z);
         Vec3(Vec<3>&& other);
         ~Vec3()=default;
 
-        T x() const;
-        T y() const;
-        T z() const;
+        GLfloat x() const;
+        GLfloat y() const;
+        GLfloat z() const;
     };
 
 }}

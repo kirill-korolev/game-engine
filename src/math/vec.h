@@ -5,9 +5,9 @@
 #ifndef GLFW_APP_VEC_H
 #define GLFW_APP_VEC_H
 
+#include <GL/glew.h>
 #include <cstdlib>
 #include <array>
-#include "defines.h"
 
 namespace kengine{ namespace math {
 
@@ -15,7 +15,7 @@ namespace kengine{ namespace math {
     class Vec {
     public:
         Vec()=default;
-        Vec(const std::array<T, N>& data);
+        Vec(const std::array<GLfloat, N>& data);
         virtual ~Vec() = default;
 
         Vec &operator+=(const Vec &other);
@@ -28,7 +28,7 @@ namespace kengine{ namespace math {
         friend bool operator!=(Vec& lhs, const Vec& rhs);
         
     protected:
-        std::array<T, N> data_;
+        std::array<GLfloat, N> data_;
     };
 }}
 
@@ -36,7 +36,7 @@ namespace kengine{ namespace math {
 
 
     template<size_t N>
-    Vec<N>::Vec(const std::array<T, N>& data){
+    Vec<N>::Vec(const std::array<GLfloat, N>& data){
         for(size_t i = 0; i != N; ++i){
             data_[i] = data[i];
         }

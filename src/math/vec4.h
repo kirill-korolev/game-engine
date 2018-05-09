@@ -12,14 +12,14 @@ namespace kengine{ namespace math{
     class Vec4: public Vec<4>{
     public:
         using Vec::Vec;
-        Vec4(T x, T y, T z, T w);
+        Vec4(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
         Vec4(Vec<4>&& other);
         ~Vec4()=default;
 
-        T x() const;
-        T y() const;
-        T z() const;
-        T w() const;
+        GLfloat x() const;
+        GLfloat y() const;
+        GLfloat z() const;
+        GLfloat w() const;
     };
 
 }}
