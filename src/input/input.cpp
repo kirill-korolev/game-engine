@@ -11,9 +11,6 @@ namespace kengine{ namespace input{
         for(int i = 0; i < MAX_BUTTONS; ++i) buttons_[i] = false;
     }
 
-    void Input::setWindow(GLFWwindow *window) {
-        glfwSetWindowUserPointer(window, this);
-    }
 
     bool Input::isKeyPressed(int keyCode){
         if(keyCode >= MAX_KEYS) return false;

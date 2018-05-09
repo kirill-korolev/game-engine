@@ -18,25 +18,14 @@ namespace kengine{ namespace graphics {
         Window(const char* title, int width, int height);
         ~Window();
         bool isClosed();
-        void tick();
+    public:
+        GLFWwindow* window;
     private:
         const char* title_;
         int width_;
         int height_;
-        GLFWwindow* window_;
-        Input input_;
     private:
-        GLfloat g_vertex_buffer_data[9] = {
-                -1.0f, -1.0f, 0.0f,
-                1.0f, -1.0f, 0.0f,
-                0.0f,  1.0f, 0.0f,
-        };
-        GLuint vertexbuffer;
         bool init();
-        void update();
-        void clear();
-        void render();
-
         friend void resize(GLFWwindow* window, int width, int height);
     };
 

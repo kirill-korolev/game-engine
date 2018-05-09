@@ -14,7 +14,6 @@ namespace kengine{ namespace input{
     public:
         Input();
         ~Input()=default;
-        void setWindow(GLFWwindow* window);
         bool isKeyPressed(int keyCode);
         bool isButtonPressed(int button);
         void getMousePosition(double& x, double& y);

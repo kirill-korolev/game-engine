@@ -19,7 +19,7 @@ namespace kengine{ namespace math{
     }
 
     Mat4 translate(const Vec3& shift){
-        Mat4 mat = id();
+        Mat4 mat = Mat4::id();
         mat.items[3] = shift.x();
         mat.items[7] = shift.y();
         mat.items[11] = shift.z();
