@@ -1,13 +1,12 @@
 #version 330 core
 
-layout (location = 0) out vec4 color;
+out vec3 color;
 
-uniform vec2 light_pos;
-uniform vec4 col;
+uniform sampler2D textureSampler;
 
 in vec4 pos;
+in vec2 UV;
 
 void main(){
-    float intensity = 1.0 / length(pos.xy - light_pos);
-    color = col * intensity;
+    color = texture(textureSampler, UV).rgb;
 }

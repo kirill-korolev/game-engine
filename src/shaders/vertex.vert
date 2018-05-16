@@ -1,14 +1,13 @@
 #version 330 core
 
 layout(location = 0) in vec3 position;
+layout(location = 1) in vec2 vertexUV;
 
-uniform mat4 projection;
-uniform mat4 view = mat4(1.0f);
-uniform mat4 model = mat4(1.0f);
+uniform mat4 mvp;
 
-out vec4 pos;
+out vec2 UV;
 
 void main(){
-    gl_Position = projection * view * model * vec4(position, 1);
-    pos = gl_Position;
+    gl_Position = mvp * vec4(position, 1);
+    UV = vertexUV;
 }
