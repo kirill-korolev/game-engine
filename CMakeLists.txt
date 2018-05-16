@@ -13,10 +13,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SRC_PATH src)
 
-set(CORE kengine.cpp)
-set(GRAPHICS window.cpp shader.cpp)
+set(CORE kengine.cpp camera.cpp)
+set(GRAPHICS window.cpp shader.cpp texture.cpp)
 set(INPUT input.cpp)
-set(MATH vec2.cpp vec3.cpp vec4.cpp mat4.cpp transform.cpp)
+set(MATH vec2.cpp vec3.cpp vec4.cpp mat4.cpp transform.cpp misc.cpp)
 
 PREPEND(CORE_SRC ${SRC_PATH}/core ${CORE})
 PREPEND(GRAPHICS_SRC ${SRC_PATH}/graphics ${GRAPHICS})
