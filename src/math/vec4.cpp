@@ -2,7 +2,7 @@
 // Created by Kirill Korolev on 09/05/2018.
 //
 
-#include "Vec4.h"
+#include "vec4.h"
 
 namespace kengine{ namespace math{
 

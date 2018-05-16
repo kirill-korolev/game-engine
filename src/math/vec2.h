@@ -22,6 +22,7 @@ namespace kengine{ namespace math{
 
 }}
 
+#undef SUFFIX
 #define SUFFIX 2
 #include "vecop.h"
 

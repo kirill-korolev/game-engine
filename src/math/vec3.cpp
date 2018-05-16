@@ -26,5 +26,13 @@ namespace kengine{ namespace math{
         return data_[2];
     }
 
+    Vec3 Vec3::cross(const Vec3 &other) const{
+        Vec3 vec;
+        vec.data_[0] = this->data_[1] * other.data_[2] - this->data_[2] * other.data_[1];
+        vec.data_[1] = this->data_[2] * other.data_[0] - this->data_[0] * other.data_[2];
+        vec.data_[2] = this->data_[0] * other.data_[1] - this->data_[1] * other.data_[0];
+        return vec;
+    }
+
 
 }}

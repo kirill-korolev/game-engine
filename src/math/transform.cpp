@@ -41,4 +41,50 @@ namespace kengine{ namespace math{
         return mat;
     }
 
+    Mat4 lookAt(const Vec3& eye, const Vec3& center, const Vec3& up){
+        Mat4 mat;
+        Vec3 x, y, z;
+
+        z = eye - center;
+        z.normalize();
+
+        y = up;
+
+        x = y.cross(z);
+        y = z.cross(x);
+
+        x.normalize();
+        y.normalize();
+
+        mat.items[0 + 0 * 4] = x.x();
+        mat.items[0 + 1 * 4] = x.y();
+        mat.items[0 + 2 * 4] = x.z();
+        mat.items[0 + 3 * 4] = -x.dot(eye);
+
+        mat.items[1 + 0 * 4] = y.x();
+        mat.items[1 + 1 * 4] = y.y();
+        mat.items[1 + 2 * 4] = y.z();
+        mat.items[1 + 3 * 4] = -y.dot(eye);
+
+        mat.items[2 + 0 * 4] = z.x();
+        mat.items[2 + 1 * 4] = z.y();
+        mat.items[2 + 2 * 4] = z.z();
+        mat.items[2 + 3 * 4] = -z.dot(eye);
+
+        mat.items[3 + 3 * 4] = 1.0;
+
+        return mat;
+    }
+
+    Mat4 perspective(GLfloat fovy, GLfloat aspectRatio, GLfloat near, GLfloat far){
+        Mat4 result;
+        GLfloat half = tan(fovy / 2.0f);
+        result.items[0] = 1.0 / aspectRatio / half;
+        result.items[5] = 1.0  / half;
+        result.items[10] = -(far + near) / (far - near);
+        result.items[11] = 1.0f;
+        result.items[14] = -2.0f * far * near / (far - near);
+        return result;
+    }
+
 }}

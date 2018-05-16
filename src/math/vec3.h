@@ -20,10 +20,13 @@ namespace kengine{ namespace math{
         GLfloat x() const;
         GLfloat y() const;
         GLfloat z() const;
+
+        Vec3 cross(const Vec3 &other) const;
     };
 
 }}
 
+#undef SUFFIX
 #define SUFFIX 3
 #include "vecop.h"
 

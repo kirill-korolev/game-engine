@@ -8,6 +8,7 @@
 #include <GL/glew.h>
 #include <cstdlib>
 #include <array>
+#include <cmath>
 
 namespace kengine{ namespace math {
 
@@ -22,7 +23,11 @@ namespace kengine{ namespace math {
         Vec &operator-=(const Vec &other);
         Vec &operator*=(const Vec &other);
         Vec &operator/=(const Vec &other);
+        Vec &operator*=(GLfloat scalar);
 
+        size_t dot(const Vec &other) const;
+        void normalize();
+        size_t length() const;
 
         friend bool operator==(Vec& lhs, const Vec& rhs);
         friend bool operator!=(Vec& lhs, const Vec& rhs);
@@ -75,6 +80,40 @@ namespace kengine{ namespace math {
         return *this;
     }
 
+    template<size_t N>
+    Vec<N>& Vec<N>::operator*=(GLfloat scalar){
+        for(size_t i = 0; i != N; ++i){
+            data_[i] *= scalar;
+        }
+        return *this;
+    }
+
+    template<size_t N>
+    size_t Vec<N>::dot(const Vec &other) const{
+        GLfloat res = 0.0;
+        for(size_t i = 0; i != N; ++i){
+            res += data_[i] * other.data_[i];
+        }
+        return res;
+    }
+
+    template<size_t N>
+    size_t Vec<N>::length() const{
+        GLfloat res = 0.0;
+        for(size_t i = 0; i != N; ++i){
+            res += pow(data_[i], 2);
+        }
+        return sqrt(res);
+    }
+
+    template<size_t N>
+    void Vec<N>::normalize(){
+        size_t len = this->length();
+        if(!len) return;
+        for(size_t i = 0; i != N; ++i){
+            data_[i] /= len;
+        }
+    }
 
     template<size_t N>
     inline bool operator==(Vec<N>& lhs, const Vec<N>& rhs){
