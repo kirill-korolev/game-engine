@@ -6,66 +6,63 @@
 
 namespace kengine{ namespace core{
 
-    Kengine::Kengine() {
-        input_ = new Input;
+    Kengine::Kengine(Window* window) {
+        if(!window) return;
+
+        this->window = window;
+        input = new Input;
+        camera = new Camera;
         currentTime_ = lastTime_ = glfwGetTime();
+
+        glfwSetWindowUserPointer(window->window, input);
+
+        modelMatrix = Mat4::id();
+
+        glClearColor(0.1f, 0.1f, 0.3f, 0.0f);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
+        glEnable(GL_CULL_FACE);
     }
 
     Kengine::~Kengine() {
-        if(window_) delete window_;
-        if(input_) delete input_;
+        if(window) delete window;
+        if(input) delete input;
+        if(camera) delete camera;
     }
 
-    void Kengine::createWindow(Window* window){
-        if(!window) return;
-        window_ = window;
-        auto* win = window_->window;
-        glfwSetWindowUserPointer(win, input_);
-    }
 
     void Kengine::mainLoop() {
-        while(!window_->isClosed()){
+        while(!window->isClosed()){
             clear();
-            render();
             update();
+            render();
         }
+
     }
 
     void Kengine::update() {
-
         currentTime_ = glfwGetTime();
-        float delta = float(currentTime_ - lastTime_);
+        GLfloat dt = GLfloat(currentTime_ - lastTime_);
 
-        if(input_->isKeyPressed(GLFW_KEY_UP)){
+        if(updateFun) updateFun(dt);
 
-        }
-
-        if(input_->isKeyPressed(GLFW_KEY_DOWN)){
-
-        }
-
-        if(input_->isKeyPressed(GLFW_KEY_LEFT)){
-
-        }
-
-        if(input_->isKeyPressed(GLFW_KEY_RIGHT)){
-
-        }
-
-        if(updateFun) updateFun(delta);
-
-        glfwSwapBuffers(window_->window);
-        glfwPollEvents();
+        projectionMatrix = perspective(radians(camera->fov), 4.0f / 3.0f, 0.1f, 100.0f);
+        viewMatrix = lookAt(camera->position, camera->position + camera->direction(), camera->up());
+        Mat4 mvp = projectionMatrix * viewMatrix * modelMatrix;
+        glUniformMatrix4fv(shader->id(), 1, GL_FALSE, mvp.items);
 
         lastTime_ = currentTime_;
     }
 
     void Kengine::clear() {
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        if(shader) shader->enable();
     }
 
     void Kengine::render() {
         if(renderFun) renderFun();
+        glfwSwapBuffers(window->window);
+        glfwPollEvents();
     }
 
 }}
